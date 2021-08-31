@@ -1,0 +1,20 @@
+.sidebar {
+    flex: 0.2;
+    /* border: 1px solid black; */
+    max-width: 230px;
+    min-width: 200px;
+    /* position: fixed; */
+    /* background-color: rgb(248, 241, 241); */
+}
+
+.sidebar>hr {
+    height: 1px;
+    border: 0;
+    background-color: lightgray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.Sidebar__item{
+    text-decoration: none;
+    color: black;
+}

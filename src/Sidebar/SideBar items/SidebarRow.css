@@ -1,0 +1,43 @@
+.SidebarRow {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.sidebarRaw__icon {
+    color: #606060;
+    font-size: large !important;
+    transition: all 1s;
+}
+
+.sidebarRaw__title {
+    flex: 1;
+    margin-left: 12px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.SidebarRow:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.SidebarRow:hover>.sidebarRaw__icon {
+    color: rgb(240, 38, 38);
+    transition: color .3s;
+}
+
+.SidebarRow:hover>.sidebarRaw__title {
+    font-weight: bold;
+}
+
+.SidebarRow.selected {
+    background-color: lightgray;
+}
+.SidebarRow.selected > .sidebarRaw__icon {
+    color: red;
+}
+.SidebarRow.selected > .sidebarRaw__title {
+    font-weight: bold;
+}
+

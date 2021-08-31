@@ -1,0 +1,48 @@
+.VideoRaw {
+    margin-bottom: 30px;
+    max-width: 80%;
+    display: flex;
+    flex-direction: row;
+}
+
+.VideoRaw>img {
+    object-fit: contain;
+    width: 246px;
+    height: 138px;
+}
+
+.videoRow__text {
+    margin-left: 14px;
+}
+.videoRow__text > h3 {
+    font-size: 16px;
+}
+
+.VideoRaw__headline {
+    font-size: 12px;
+    color: #606060;
+}
+
+.VideoRaw__description {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #606060;
+}
+
+.VideoRaw__subNumber {
+    font-weight: bolder;
+    color: rgb(84, 157, 211);
+}
+.VideoRaw__Logo{
+    display: flex;
+    margin-top: 5px;
+}
+.VideoRaw__avatar{
+    height: 30px !important;
+    width: 30px !important;
+}
+.VideRaw__Channel{
+    margin-left: 14px;
+    font-size: 14px;
+    color: #606060;
+}

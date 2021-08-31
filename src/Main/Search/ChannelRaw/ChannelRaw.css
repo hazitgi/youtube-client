@@ -1,0 +1,54 @@
+.ChannelRaw{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.ChannelRaw__logo{
+    height: 120px !important;
+    width: 120px !important;
+    margin: 10px 60px;
+}
+.ChannelRaw__text{
+    display: flex;
+    flex-direction: column;
+}
+.ChannelRaw__text > p{
+   color: #606060;
+   font-size: small !important;
+}
+.ChannelRaw__text > h4{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.ChannelRaw__subscription{
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.ChannelRaw__subscription > button{
+    background-color: #c00;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 25px;
+    box-shadow: 0px 1px 4px #a29696;
+    color: #fff;
+    cursor: pointer;
+}
+.ChannelRaw__subscription > button:hover{
+    background-color: rgb(243, 23, 23);
+    box-shadow: 2px 4px 4px #796f6f;
+    font-weight: bolder;
+    transition: 1s all;
+}
+.ChannelRaw__subscription >.ChannelRaw__notify{
+    margin-left: 10px;
+    cursor: pointer;
+}
+.ChannelRaw__subscription >.ChannelRaw__notify:hover{
+    background-color: #a29696;
+    border-radius: 50%;
+    transition: .5s all;
+}
