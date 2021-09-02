@@ -2,22 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+// import { BrowserRouter as Router, Route } from "react-router-dom"
 
 // user
 import App from './App';
-import SearchPage from './Main/Search/SearchPage';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Route path='/' exact component={App} />
-    </Router>
-    {/* <Router  */}
-    {/* <Router path='path="/search/:data"' component={SearchPage} /> */}
+    <App />
+    {/* <Router>
+      <Route path='/' component={App} exact />
+    </Router> */}
   </React.StrictMode>,
   document.getElementById('root')
-
 );
 
 
