@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
-import './Header.css';
+import '../../user/Header/Header.css'
+
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
-import AppsIcon from '@material-ui/icons/Apps';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import Avatar from "@material-ui/core/Avatar"
 import { Link } from 'react-router-dom';
 
 
-function Header() {
+function StudioHeader() {
     const [searchData, setSearchData] = useState('')
 
 
@@ -28,24 +27,27 @@ function Header() {
                 <input type="text" placeholder="Search"
                     onChange={(event) => { setSearchData(event.target.value) }}
                 />
-                    <Link to={`/search/${searchData}`}>
-                        <SearchIcon className="header__inputButton" />
-                    </Link>
+                <Link to={`/search`}>
+                    <SearchIcon className="header__inputButton" />
+                </Link>
             </div>
             <div className="header__right">
-                <VideoCallIcon className="header__icon" />
-                <AppsIcon className="header__icon" />
-                <NotificationsIcon className="header__icon" />
+                <Link to={'/studio'} >
+                    <VideoCallIcon className="header__icon" />
+                </Link>
+
+
                 <Avatar alt="Remy Sharp"
                     src="/images/logo.png"
                 />
+
             </div>
 
 
-        </div>
+        </div >
     )
 
 
 }
 
-export default Header
+export default StudioHeader

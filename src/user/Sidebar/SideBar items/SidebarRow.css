@@ -21,6 +21,15 @@
     background-color: lightgray;
     cursor: pointer;
 }
+.active{
+    background-color: lightgray;
+}
+.active>.sidebarRaw__icon{
+    color: rgb(240, 38, 38);
+}
+.active>.sidebarRaw__title {
+    font-weight: bold;
+}
 
 .SidebarRow:hover>.sidebarRaw__icon {
     color: rgb(240, 38, 38);
