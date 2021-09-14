@@ -21,7 +21,9 @@ function Login() {
     const [mailError, setmailError] = useState('')
     const [PError, setPError] = useState('')
     const [loginError, setLoginError] = useState('')
-    const [userToken, setUserToken] = useCookies([''])
+    const [userToken, setUserToken] = useCookies(['userToken'])
+    // const [cookies, setCookie] = useCookies(['userToken']);
+
 
     const { dispatch, isAuthenticated, error, state } = useContext(UserAuthContext)
 

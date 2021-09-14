@@ -17,11 +17,13 @@ const GlobalContext = createContext(initialState)
 // Provider Component
 const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, initialState)
-
     const [Sidebar, toggleSidebar] = useState(false)
     const handleToggleSidebar = () => {
         toggleSidebar(value => !value)
     }
+
+    const [ChannelDetails, setChannelDetails] = useState()
+
     return (
         <GlobalContext.Provider value={{
             handleToggleSidebar,

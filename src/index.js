@@ -2,18 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 // import { BrowserRouter as Router, Route } from "react-router-dom"
-import './index.css'
+import "./index.css";
 // user
 import App from "./App";
 import { AuthPorvider } from "./context/AuthContext";
+import { GlobalProvider } from "./context/GlobalState";
 import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthPorvider>
-      <Router>
-        <App />
-      </Router>
+      <GlobalProvider>
+        <Router>
+          <App />
+        </Router>
+      </GlobalProvider>
     </AuthPorvider>
   </React.StrictMode>,
   document.getElementById("root")

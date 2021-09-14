@@ -1,0 +1,22 @@
+/* 
+.MuiInputBase-root {
+  margin-bottom: 30px;
+} */
+.error_msg {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 30px;
+}
+.close_btn {
+  float: right;
+}
+.save_btn_div {
+  display: flex;
+  justify-content: flex-end;
+}
+.channel_btn {
+  text-align: right;
+}
+.file_input {
+  display: none;
+}

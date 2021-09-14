@@ -1,9 +1,27 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import './HomeHeader.css'
 import Avatar from "@material-ui/core/Avatar"
-import Modal from 'react-modal';
+import Modals from '../Modal/Modals'
+// import Modal from 'react-modal';
 
 const HomeHeader = () => {
+    const [ChannelDetails, setChannelDetails] = useState({})
+
+
+    const [ModalisOpen, setModalisOpen] = useState(false)
+
+    const customStyles = {
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            width: '50%',
+        },
+    };
+
     return (
         <Fragment>
             <div className="channel__header">
@@ -12,7 +30,7 @@ const HomeHeader = () => {
                     <span>React Js</span>
                 </div>
                 <div className="channel__right">
-                    <button>Add New Channel</button>
+                    <button className="channel_btn" onClick={() => setModalisOpen(true)}>Add New Channel</button>
                 </div>
             </div>
             <div className="channel_nav">
@@ -25,10 +43,16 @@ const HomeHeader = () => {
                     <li>PROFILE</li>
                 </ul>
             </div>
-            <Modal isOpen={true}>
+            {/* <Modal isOpen={ModalisOpen}
+                onRequestClose={() => setModalisOpen(false)}
+                style={customStyles}>
                 <h2>Modal title</h2>
                 <p>mobal body</p>
-            </Modal>
+                <button className="channel_btn" onClick={() => setModalisOpen(false)}>
+                    close
+                </button>
+            </Modal> */}
+            <Modals customStyles={customStyles} ModalisOpen={ModalisOpen} setModalisOpen={setModalisOpen} />
 
         </Fragment>
     )
