@@ -3,13 +3,15 @@ export default (state, action) => {
         case 'USER_LOGIN':
             return {
                 ...state,
-                userLogged: true,
-                data: action.payload
+                LoginSatus: true,
+                data: action.payload,
+                error: false
             }
         case 'USER_LOGIN_ERROR':
             return {
                 ...state,
-                userLogged: false,
+                LoginSatus: false,
+                error: 'invalid user name or password'
             }
         default:
             return state

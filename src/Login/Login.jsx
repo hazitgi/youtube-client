@@ -1,60 +1,105 @@
-import React, { Fragment, useState, useContext } from 'react'
+import React, { Fragment, useState, useContext, useEffect } from 'react'
 // import { Formik } from 'formik'
 import { Link } from 'react-router-dom';
-import { GlobalContext } from '../context/GlobalState'
 import './Login.css'
+import { useHistory } from 'react-router-dom'
+// import { userLogin } from '../Utils/APIService';
+import { useCookies } from 'react-cookie';
+import inputCustomHook from './inputCustomHook';
+
+import { UserAuthContext } from '../context/AuthContext'
+
+import axios from 'axios';
+
 
 function Login() {
-    const [Login, setLogin] = useState(true)
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    let [mailError, setmailError] = useState('')
-    let [PError, setPError] = useState('')
-    const { userLogin } = useContext(GlobalContext)
 
-    const SubmitForm = (event) => {
+    const [Login, setLogin] = useState(true)
+    const [email, bindEmail] = inputCustomHook('')
+    const [password, bindPassword] = inputCustomHook('')
+    const [mobile, bindMobile] = inputCustomHook('')
+    const [mailError, setmailError] = useState('')
+    const [PError, setPError] = useState('')
+    const [loginError, setLoginError] = useState('')
+    const [userToken, setUserToken] = useCookies([''])
+
+    const { dispatch, isAuthenticated, error, state } = useContext(UserAuthContext)
+
+
+    let history = useHistory();
+    console.log(state);
+    const SubmitForm = async (event) => {
         event.preventDefault()
-        const newLogin = {
-            email,
-            password
-        }
-        if (!email) {
-            setmailError("this field is required")
-        } else if (!password) {
-            setPError("Password can't empty")
-        } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-            setmailError("Invalid Email Address")
-        } else {
-            setPError("")
-            setmailError("")
-            userLogin(newLogin)
+        if (Login) {
+            const newLogin = {
+                email,
+                password
+            }
+            if (!email) {
+                setmailError("this field is required")
+            } else if (!password) {
+                setPError("Password can't empty")
+            } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                setmailError("Invalid Email Address")
+            } else {
+                setPError("")
+                setmailError("")
+                setLoginError("")
+              
+                try {
+                    let userLoggin = await axios.post(`/api/v1/youtube/userLogin`, newLogin)
+                    console.log("loggin");
+                    console.log(userLoggin);
+                    if (userLoggin && userLoggin.data.success) {
+                        console.log('ready');
+                        setUserToken('userToken', userLoggin.data.token)
+                        console.log("userToken", userToken);
+                        dispatch({
+                            type: 'USER_LOGIN',
+                            payload: userLoggin.data
+                        })
+                        history.push('/')
+                    }
+                } catch (error) {
+                    console.log("error");
+                    console.log(error);
+                    dispatch({
+                        type: 'USER_LOGIN_ERROR',
+                        payload: error
+                    })
+                    setLoginError("Invalid email or password")
+                }
+
+            }
+        }else{
+            
         }
 
     }
-
 
     return (
         <div className="Login">
             <div className="body">
                 <span className="Login__head">Login</span>
                 <form onSubmit={(e) => SubmitForm(e)}>
+                    {error}
                     {Login ?
                         <Fragment>
-                            <input type="text" name="email" className="input__Field" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <input type="text" name="email" className="input__Field" placeholder="Email" {...bindEmail} />
                             <span className="ErrorField">{mailError}</span>
-                            <input type="password" name="password" className="input__Field" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <input type="password" name="password" className="input__Field" placeholder="Password" {...bindPassword} />
                             <span className="ErrorField">{PError}</span>
-
                         </Fragment>
                         :
                         <Fragment>
-                            <input type="number" name="mobile" className="input__Field" placeholder="Mobile Number" />
-                            <input type="number" name="otp" className="input__Field" placeholder="Enter OTP" />
+                            <input type="number" name="mobile" className="input__Field" placeholder="Mobile Number" {...bindMobile} />
+                            {/* <input type="number" name="otp" className="input__Field" placeholder="Enter OTP" /> */}
                         </Fragment>
                     }
                     {/* <input type="text" name="email" className="input__Field" placeholder="Email" />
                     <input type="password" name="password" className="input__Field" placeholder="Password" /> */}
-                    <button type='submit' className="Login__btn">Login</button>
+                    <span className="ErrorField">{loginError}</span>
+                    <button type='submit' className="Login__btn">{Login ? "Login" : "Next"}</button>
                     <span className="Login__Method" onClick={() => setLogin(!Login)}>Login with {Login ? "OTP" : "Email"}</span>
                 </form>
 

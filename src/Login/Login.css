@@ -104,7 +104,7 @@ form{
 .Login__Method{
     font-size: 12px;
 }
-.Login__Method:nth-child(even){
+form > .Login__Method{
     cursor: pointer;
 }
 

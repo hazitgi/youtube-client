@@ -24,7 +24,7 @@ function StudioHeader() {
                 </Link>
             </div>
             <div className="header__input">
-                <input type="text" placeholder="Search"
+                <input type="text" placeholder="Search" value={searchData}
                     onChange={(event) => { setSearchData(event.target.value) }}
                 />
                 <Link to={`/search`}>
@@ -37,7 +37,7 @@ function StudioHeader() {
                 </Link>
 
 
-                <Avatar alt="Remy Sharp"
+                <Avatar alt="Remy Sharp" 
                     src="/images/logo.png"
                 />
 

@@ -58,3 +58,8 @@
     margin-right: 8px;
     cursor: pointer;
 }
+
+.Profile__Image{
+    height: 30px;
+    width: 30px;
+}

@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import './Header.css';
+import '../../user/Header/Header.css'
+
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import Avatar from "@material-ui/core/Avatar"
 import { Link } from 'react-router-dom';
 
 
-function Header() {
+function StudioHeader() {
     const [searchData, setSearchData] = useState('')
 
 
@@ -17,7 +17,7 @@ function Header() {
         <div className="header">
             <div className="header__left">
                 <MenuIcon />
-                <Link to={'/'}>
+                <Link to={'/admin'}>
                     <img
                         className="header__logo"
                         src="/images/logo.png" alt="" wdith="100" />
@@ -32,15 +32,15 @@ function Header() {
                 </Link>
             </div>
             <div className="header__right">
-                <Link to={'/studio'} >
+                <Link to={'/admin'} >
                     <VideoCallIcon className="header__icon" />
                 </Link>
-                <NotificationsIcon className="header__icon" />
-                <Link to={'/userLogin'} className="drop_down_btn">
-                    <Avatar alt="Remy Sharp" className="Profile__Image"
-                        src="/images/logo.png"
-                    />
-                </Link>
+
+
+                <Avatar alt="Remy Sharp"
+                    src="/images/logo.png"
+                />
+
             </div>
 
 
@@ -50,4 +50,4 @@ function Header() {
 
 }
 
-export default Header
+export default StudioHeader
