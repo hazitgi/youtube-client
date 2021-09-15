@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import Modal from 'react-modal';
 import { TextField } from '@material-ui/core';
-import './Modals.css';
+import './CreateChannel.css';
 import CloseIcon from '@material-ui/icons/Close';
 // import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Button from '@material-ui/core/Button';
@@ -10,8 +10,8 @@ import { UserAuthContext } from '../../../context/AuthContext';
 import { AddChannel } from '../../API/APIService';
 
 
-const Modals = ({ customStyles, ModalisOpen, setModalisOpen }) => {
-    Modal.setAppElement('#root')
+
+const CreateChannel = () => {
     const { state } = useContext(UserAuthContext)
     console.log(`user ${state.user}
     id ${state.id}`);
@@ -85,42 +85,38 @@ const Modals = ({ customStyles, ModalisOpen, setModalisOpen }) => {
 
 
     return (
-        <Modal isOpen={ModalisOpen}
-            onRequestClose={() => setModalisOpen(false)}
-            style={customStyles}>
-            <CloseIcon onClick={() => setModalisOpen(false)} className="close_btn" />
+
+        <form onSubmit={(e) => handleSubmit(e)} >
+
+            <TextField label="Channel Name" name="channel_name"
+                value={values.channel_name} onChange={(e) => handleChange(e)}
+            />
+            <span className="error_msg">
+                {errors.channel_name}
+            </span>
+
+            <label htmlFor="contained-button-file">
+                <Button variant="contained" color="primary" component="span"
+                > Upload Channel Logo </Button>
+            </label>
+            <input accept="image/*" className="file_input" id="contained-button-file" type="file" name="channel_logo"
+                onChange={(e) => values.channel_logo = e.target.files[0]}
+
+            />
+            <span className="error_msg">
+                {errors.channel_logo}
+            </span>
 
 
-            <form onSubmit={(e) => handleSubmit(e)} >
+            <div className="save_btn_div">
+                <button type='submit' className="channel_btn">
+                    Submit
+                </button>
+            </div>
+        </form>
 
-                <TextField label="Channel Name" name="channel_name"
-                    value={values.channel_name} onChange={(e) => handleChange(e)}
-                />
-                <span className="error_msg">
-                    {errors.channel_name}
-                </span>
-
-                <label htmlFor="contained-button-file">
-                    <Button variant="contained" color="primary" component="span"
-                    > Upload Channel Logo </Button>
-                </label>
-                <input accept="image/*" className="file_input" id="contained-button-file" type="file" name="channel_logo"
-                    onChange={(e) => values.channel_logo = e.target.files[0]}
-
-                />
-                <span className="error_msg">
-                    {errors.channel_logo}
-                </span>
-
-
-                <div className="save_btn_div">
-                    <button type='submit' className="channel_btn">
-                        Submit
-                    </button>
-                </div>
-            </form>
-        </Modal >
     )
 }
 
-export default Modals
+export default CreateChannel
+

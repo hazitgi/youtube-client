@@ -6,6 +6,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
 import Avatar from "@material-ui/core/Avatar"
 import { Link } from 'react-router-dom';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 
 function StudioHeader() {
@@ -27,20 +28,14 @@ function StudioHeader() {
                 <input type="text" placeholder="Search" value={searchData}
                     onChange={(event) => { setSearchData(event.target.value) }}
                 />
-                <Link to={`/search`}>
-                    <SearchIcon className="header__inputButton" />
-                </Link>
+
+                <SearchIcon className="header__inputButton" />
+
             </div>
             <div className="header__right">
-                <Link to={'/studio'} >
-                    <VideoCallIcon className="header__icon" />
+                <Link to={'/'} className="Link_items">
+                    <ExitToAppIcon className="header__icon" />
                 </Link>
-
-
-                <Avatar alt="Remy Sharp" 
-                    src="/images/logo.png"
-                />
-
             </div>
 
 

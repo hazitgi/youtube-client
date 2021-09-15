@@ -1,13 +1,13 @@
-import React, { createContext, useState, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer } from 'react';
 import AuthReducer from './AuthReducer';
 
 
 // const Token = localStorage.getItem('userToken')
 
 const initialState = {
-    isAuthenticated: sessionStorage.getItem("isAuthenticated") || false,
-    user: sessionStorage.getItem("user") || null,
-    id: sessionStorage.getItem("id") || null,
+    isAuthenticated: localStorage.getItem("isAuthenticated") || false,
+    user: localStorage.getItem("user"),
+    id: localStorage.getItem("id"),
     token: null,
     error: false
 }
@@ -15,7 +15,7 @@ const UserAuthContext = createContext(initialState)
 
 const AuthPorvider = ({ children }) => {
     const [state, dispatch] = useReducer(AuthReducer, initialState)
-    console.log(state);
+    // console.log(state);
     return (
         <UserAuthContext.Provider value={{
             state,
@@ -28,7 +28,7 @@ const AuthPorvider = ({ children }) => {
     )
 }
 
-const userAuth = () => useContext(UserAuthContext)
+// const userAuth = () => useContext(UserAuthContext)
 
 
 export { AuthPorvider, UserAuthContext }

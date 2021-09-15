@@ -1,16 +1,16 @@
 export default (state, action) => {
     switch (action.type) {
         case 'USER_LOGIN':
-            sessionStorage.setItem("user", action.payload.data.username);
-            sessionStorage.setItem('id', JSON.stringify(action.payload.data._id));
-            sessionStorage.setItem('isAuthenticated', true);
+            localStorage.setItem("user", action.payload.data.username);
+            localStorage.setItem('id', JSON.stringify(action.payload.data._id));
+            localStorage.setItem('isAuthenticated', true);
 
 
             return {
                 ...state,
-                isAuthenticated: sessionStorage.getItem("isAuthenticated"),
-                user: sessionStorage.getItem("user"),
-                id: sessionStorage.getItem("id"),
+                isAuthenticated: localStorage.getItem("isAuthenticated"),
+                user: localStorage.getItem("user"),
+                id: localStorage.getItem("id"),
                 token: action.payload.token,
                 error: false
             }

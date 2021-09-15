@@ -16,7 +16,8 @@ function Header() {
     return (
         <div className="header">
             <div className="header__left">
-                <MenuIcon />
+
+                <MenuIcon id="Menu_icon" />
                 <Link to={'/'}>
                     <img
                         className="header__logo"
@@ -33,7 +34,7 @@ function Header() {
             </div>
             <div className="header__right">
                 <Link to={'/studio'} >
-                    <VideoCallIcon className="header__icon" />
+                    <VideoCallIcon className="header__icon" className="Link_items" />
                 </Link>
                 <NotificationsIcon className="header__icon" />
                 <Link to={'/userLogin'} className="drop_down_btn">

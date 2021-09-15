@@ -1,12 +1,12 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect, useContext } from 'react'
 import './HomeHeader.css'
 import Avatar from "@material-ui/core/Avatar"
 import Modals from '../Modal/Modals'
 // import Modal from 'react-modal';
 
-const HomeHeader = () => {
-    const [ChannelDetails, setChannelDetails] = useState({})
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
+const HomeHeader = () => {
 
     const [ModalisOpen, setModalisOpen] = useState(false)
 

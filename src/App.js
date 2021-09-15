@@ -21,7 +21,7 @@ import { UserAuthContext } from "./context/AuthContext";
 // admin
 import AdminHeader from "./admin/Admin Header/AdminHeader";
 import AdminSIdebar from "./admin/Admin Sidebar/AdminSIdebar";
-import Studio from "./studio/Studio";
+
 import ChannelHome from "./studio/screen/channel/ChannelHome";
 
 function App() {
