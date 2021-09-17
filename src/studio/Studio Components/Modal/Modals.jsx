@@ -74,6 +74,7 @@ const Modals = ({ customStyles, ModalisOpen, setModalisOpen }) => {
             uploadData.append('userId', JSON.parse(state.id))
             uploadData.append('channel_logo', values.channel_logo)
 
+            
             AddChannel(uploadData).then((res) => {
                 console.log(res);
             })
