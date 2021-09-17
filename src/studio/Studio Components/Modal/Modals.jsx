@@ -10,6 +10,7 @@ import { UserAuthContext } from '../../../context/AuthContext';
 import { AddChannel } from '../../API/APIService';
 
 
+
 const Modals = ({ customStyles, ModalisOpen, setModalisOpen }) => {
     Modal.setAppElement('#root')
     const { state } = useContext(UserAuthContext)
