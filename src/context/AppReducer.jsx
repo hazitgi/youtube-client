@@ -3,8 +3,12 @@ export default (state, action) => {
         case 'GET_CHANNEL_DETAILS':
             return {
                 ...state,
-                channel_name: action.payload.channel_name,
-                channel_Logo: action.payload.channel_Logo,
+                channelDetails: action.payload.data,
+            }
+        case 'ADD_NEW_CHANNEL':
+            return {
+                ...state,
+                channelDetails: action.payload
             }
 
         default:

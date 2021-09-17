@@ -1,3 +1,4 @@
+import { CardActions } from '@material-ui/core'
 import axios from 'axios'
 import React, { createContext, useReducer, useContext } from 'react'
 import AppReducer from './AppReducer'
@@ -26,15 +27,31 @@ const GlobalProvider = ({ children }) => {
         try {
             const channel = await axios.get(`/api/v1/youtube/studio/channel/getChannel/${userId}`)
             if (channel) {
-                console.log(channel);
-                // dispatch({
-                //     type: 'GET_CHANNEL_DETAILS',
-                //     // payload:
-                // })
+                console.log(channel.data);
+                dispatch({
+                    type: 'GET_CHANNEL_DETAILS',
+                    payload: channel.data
+                })
             }
         } catch (err) {
             console.log("err");
         }
+    }
+
+    let AddChannel = async (data) => {
+        axios.post("/api/v1/youtube/studio/channel/add_channel", data, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+                Accept: "application/json",
+                type: "formData",
+            },
+        }).then((response) => {
+            console.log(response);
+            dispatch({
+                type: 'ADD_NEW_CHANNEL',
+                payload: response.data
+            })
+        })
     }
 
 
@@ -42,7 +59,8 @@ const GlobalProvider = ({ children }) => {
         <GlobalContext.Provider value={{
             channelDetails: state.channelDetails,
             dispatch,
-            getChannelDetails
+            getChannelDetails,
+            AddChannel
         }}>{children}</GlobalContext.Provider>
     )
 }

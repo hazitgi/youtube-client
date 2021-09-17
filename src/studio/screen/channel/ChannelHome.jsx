@@ -6,7 +6,7 @@ import HomeHeader from '../../Studio Components/HomeHeader/HomeHeader'
 
 
 const ChannelHome = () => {
-    const { getChannelDetails } = useContext(GlobalContext)
+    const { getChannelDetails, channelDetails } = useContext(GlobalContext)
 
     useEffect(() => {
         console.log("did mount");
@@ -15,7 +15,7 @@ const ChannelHome = () => {
 
     return (
         <div className="studio__screen">
-            <HomeHeader />
+            <HomeHeader channelDetails={channelDetails} />
         </div>
     )
 }

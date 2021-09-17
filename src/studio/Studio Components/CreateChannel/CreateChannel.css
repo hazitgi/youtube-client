@@ -1,0 +1,10 @@
+.create_channel {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.create_channel > form {
+  width: 70%;
+}
